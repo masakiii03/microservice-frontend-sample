@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getJwt = async (code) => {
+export const getAccessToken = async (code) => {
   const res = await axios.post(
-    "http://localhost:8080/authentication-service/jwt",
+    "http://localhost:9000/access_token",
     {
       code
     }
@@ -14,7 +14,7 @@ export const getGwValue = async () => {
   const res = await axios.get("http://localhost:8080/value",
     {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
+        Authorization: localStorage.getItem("token")
       }
     }
   );
@@ -25,7 +25,7 @@ export const getGwClient1 = async (second) => {
   const res = await axios.get(`http://localhost:8080/client-1/sample/${second}`,
     {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
+        Authorization: localStorage.getItem("token")
       }
     }
   );
@@ -36,7 +36,7 @@ export const getGwClient3 = async (second) => {
   const res = await axios.get(`http://localhost:8080/client-3/sample/${second}`,
     {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
+        Authorization: localStorage.getItem("token")
       }
     }
   );

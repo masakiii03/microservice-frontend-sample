@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Result } from "./Result";
-import { getJwt, getGwValue, getGwClient1, getGwClient3 } from "../api/Api";
+import { getAccessToken, getGwValue, getGwClient1, getGwClient3 } from "../api/Api";
 
 export const Home = () => {
 
   const [res, setRes] = useState("");
 
-  const getJwtFromServer = async () => {
+  const getAccessTokenFromServer = async () => {
     let code = window.location.search;
     code = code.slice(6);
-    const res = await getJwt(code);
+    const res = await getAccessToken(code);
 
     if (res.data !== "error") {
       localStorage.setItem("token", res.data);
@@ -32,7 +32,9 @@ export const Home = () => {
     setRes(res.data);
   }
 
-  getJwtFromServer();
+  useEffect(() => {
+    getAccessTokenFromServer();
+  }, []);
 
 
   return (
