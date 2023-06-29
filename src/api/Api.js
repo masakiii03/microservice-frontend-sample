@@ -1,15 +1,5 @@
 import axios from "axios";
 
-export const getAccessToken = async (code) => {
-  const res = await axios.post(
-    "http://localhost:9000/access_token",
-    {
-      code
-    }
-  );
-  return res;
-}
-
 export const getGwValue = async () => {
   const res = await axios.get("http://localhost:8080/value",
     {
