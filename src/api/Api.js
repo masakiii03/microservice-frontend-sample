@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getGwValue = async () => {
-  const res = await axios.get("http://localhost:8080/value",
+export const getServiceValue = async (port) => {
+  const res = await axios.get(`http://localhost:${port}/value`,
     {
       headers: {
         Authorization: localStorage.getItem("token")
